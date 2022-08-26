@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,5 @@ Route::get('/dale', function() {
     return view('dale');
 });
 
+Route::resource('/users', UserController::class);
 require __DIR__.'/auth.php';

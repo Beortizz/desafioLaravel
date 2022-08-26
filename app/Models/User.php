@@ -41,4 +41,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function fieldsWithValue() {
+        return [
+            'Nome' => $this->name,
+            'E-mail' => $this->email,
+        ];
+    }
 }
