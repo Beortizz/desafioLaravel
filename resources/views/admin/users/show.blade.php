@@ -1,4 +1,4 @@
-@extends('layouts.sistema')
+@extends('layouts.master')
 
 @section('content')
 @component('admin.components.show')
