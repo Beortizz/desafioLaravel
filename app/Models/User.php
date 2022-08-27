@@ -47,6 +47,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'Nome' => $this->name,
             'E-mail' => $this->email,
+            'Matricula' => $this->matricula,
+            'Fidelidade' => $this->fidelidade,
         ];
     }
 }

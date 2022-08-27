@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EstoqueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,5 @@ Route::get('/dale', function() {
 });
 
 Route::resource('/users', UserController::class);
+Route::resource('/estoque', EstoqueController::class);
 require __DIR__.'/auth.php';

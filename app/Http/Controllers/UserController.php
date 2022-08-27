@@ -23,13 +23,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $user = new User();
-        return view('admin.users.create', compact('user'));
-        
-    
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -37,13 +31,6 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $user = $request->all();
-        User::create($user);
-
-        return redirect()->route('admin.index')->with('Success', true);
-    }
 
     /**
      * Display the specified resource.
