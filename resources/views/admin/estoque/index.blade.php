@@ -4,7 +4,17 @@
 @component('admin.components.tablePaginate')
 
 @slot('title', 'Estoque')
-
+@slot('navTable')
+<nav class="navbar navbar-light bg-light nav-search">
+    <div class="container-fluid bottom-add d-flex">
+        <form class="d-flex justify-content-end bar-search" method="get">
+            <input class="form-control me-2" type="search" placeholder="Pesquisar..." aria-label="Search" name="search">
+            <button class="btn btn-primary bottom-search" type="submit">Pesquisar</button>
+        </form>
+        <a href="{{ route('estoque.create'  ) }}" class="btn btn-secondary btn-add">Adicionar</a>
+    </div>
+</nav>
+@endslot
 @slot('head')
 <th width="30%">Produto</th>
 <th width="20%">Quantidade</th>

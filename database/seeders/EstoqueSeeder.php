@@ -13,8 +13,8 @@ class EstoqueSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-       Estoque::factory()->count(6)->create();
-    }
-}
+//     public function run()
+//     {
+//        Estoque::factory()->count(1)->create();
+//     }
+ }

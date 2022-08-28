@@ -6,6 +6,7 @@
     </div>
     @endif
     <div class="card-body table-responsive table-sm">
+        {{ $navTable ?? null }}
         <table id="example" class="w-100 table table-hover dataTableSimple table-striped">
             <thead class="">
                 <tr>

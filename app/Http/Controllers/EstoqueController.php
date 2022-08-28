@@ -25,7 +25,7 @@ class EstoqueController extends Controller
         $estoque = $request->all();
         Estoque::create($estoque);
 
-        return redirect()->route('admin.estoque.index')->with('Success', true);
+        return redirect()->route('estoque.index')->with('Success', true);
     }
 
     public function show(Estoque $estoque)
