@@ -36,4 +36,5 @@ Route::get('/dale', function() {
 
 Route::resource('/users', UserController::class);
 Route::resource('/estoque', EstoqueController::class);
+Route::resource('/produtos', ProdutosController::class);
 require __DIR__.'/auth.php';
