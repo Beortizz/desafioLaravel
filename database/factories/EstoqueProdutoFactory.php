@@ -3,12 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Produtos;
+use App\Models\Produto;
 use App\Models\Estoque;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class EstoqueProdutosFactory extends Factory
+class EstoqueProdutoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class EstoqueProdutosFactory extends Factory
     public function definition()
     {
         return [
-            'produto_id' => Produtos::inRandomOrder()->first()->id,
+            'produto_id' => Produto::inRandomOrder()->first()->id,
             'estoque_id' => Estoque::inRandomOrder()->first()->id,
         ];
     }

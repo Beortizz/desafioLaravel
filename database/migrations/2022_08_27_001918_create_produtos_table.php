@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('sabor');
             $table->float('preco');
             $table->string('descricao');
-            $table->string('path');
+            $table->string('path')->default(' ');
             $table->timestamps();
         });
     }

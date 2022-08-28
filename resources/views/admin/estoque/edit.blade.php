@@ -4,7 +4,7 @@
 
 @component('admin.components.edit')
 @slot('title', 'Editar Estoque')
-@slot('url', route('estoque.update', $estoque ->id))
+@slot('url', route('estoque.update', $estoque->id))
 @slot('form')
 @include('admin.estoque.form')
 @endslot

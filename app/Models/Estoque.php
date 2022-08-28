@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Produtos;
+use App\Models\Produto;
 
 class Estoque extends Model
 {
@@ -16,7 +16,7 @@ class Estoque extends Model
     ];
     public function Produtos()
     {
-        return $this->belongsToMany(Produtos::class)->withTimestamps();
+        return $this->belongsToMany(Produto::class)->withTimestamps();
     }
 
     public function fieldsWithValue() {

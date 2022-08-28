@@ -2,9 +2,10 @@
 
 @section('content')
 
+
 @component('admin.components.edit')
-@slot('title', 'Editar produtos')
-@slot('url', route('produtos.update', $produtos ->id))
+@slot('title', 'Editar Produtos')
+@slot('url', route('produtos.update', $produto->id))
 @slot('form')
 @include('admin.produtos.form')
 @endslot
