@@ -35,7 +35,7 @@ Route::get('/dale', function() {
     return view('dale');
 });
 
-Route::resource('/users', UserController::class);
-Route::resource('/estoque', EstoqueController::class);
-Route::resource('/produtos', ProdutosController::class);
+Route::resource('/users', UserController::class)->middleware('auth');
+Route::resource('/estoque', EstoqueController::class)->middleware('auth');
+Route::resource('/produtos', ProdutosController::class)->middleware('auth');
 require __DIR__.'/auth.php';
