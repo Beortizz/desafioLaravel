@@ -9,6 +9,12 @@
 @include('admin.produtos.form')
 @endslot
 @slot('back')
+@can('create', $produto)
+@slot('submitButton')
+<button type="submit" form="form-adicionar"
+class="btn btn-dark float-right">{{$button_name ?? 'Cadastrar'}}</button>
+@endslot
+@endcan
 <a href="{{ route('produtos.index') }}" class="btn btn-dark float-left"><svg xmlns="http://www.w3.org/2000/svg"
         width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
@@ -16,7 +22,6 @@
     </svg>Voltar</a>
 @endslot
 @endcomponent
-
 @endsection
 
 @push('scripts')

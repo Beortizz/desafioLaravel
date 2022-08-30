@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @section('content')
@@ -9,6 +10,11 @@
 @include('admin.users.form')
 @endslot
 @slot('back')
+@can('update', $user)
+@slot('submitButton')
+<button type="submit" form="form-adicionar" class="btn btn-primary float-right">{{$button_name ?? 'Salvar Alterações'}}</button>
+@endslot
+@endcan
 <a href="{{ route('users.index') }}" class="btn btn-dark float-left"><svg xmlns="http://www.w3.org/2000/svg" width="16"
         height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
@@ -18,9 +24,3 @@
 @endcomponent
 
 @endsection
-
-@push('scripts')
-<script>
-$("#type").attr("disabled", true);
-</script>
-@endpush

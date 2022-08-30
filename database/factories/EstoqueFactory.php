@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Estoque;
+use App\Models\Produto;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Estoque>
  */
@@ -16,6 +17,9 @@ class EstoqueFactory extends Factory
      */
     public function definition()
     {
+        Produto::factory()->count(3)->create();
+        
+       
         return [
             'Produtos' => $this->faker->word(),
             'Quantidade' => rand(1, 100),

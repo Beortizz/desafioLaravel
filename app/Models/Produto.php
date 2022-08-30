@@ -25,6 +25,8 @@ class Produto extends Model
             'Preço' => $this->preco,
             'Sabor' => $this->sabor,
             'Descrição' => $this->descricao,
+            'Quantidade' => Estoque::get('quantidade'),
+            'Data' => Estoque::get('data'),
         ];
     }
 }

@@ -11,27 +11,8 @@
             </form>
         </div>
         <div class="card-footer">
-            <button type="submit" form="form-adicionar" class="btn btn-primary float-right">{{$button_name ?? 'Salvar Alterações'}}</button>
+            {{ $submitButton ?? null }}
             {{ $back ?? null }}
         </div>
     </div>
 </div>
-
-@push('scripts')
-    @if (isset($load) && $load)
-        <script>
-            $('#form-adicionar').on('submit', function (event) {
-                Swal.fire({
-                    title: 'Atualizando...',
-                    allowOutsideClick: false,
-                    width: 400,
-                    showCancelButton: false,
-                    showConfirmButton: false,
-                    onBeforeOpen: () => {
-                        Swal.showLoading()
-                    },
-                });
-            });
-        </script>
-    @endif
-@endpush

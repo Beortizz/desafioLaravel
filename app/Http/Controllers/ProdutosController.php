@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use App\Models\Estoque;
 
 class ProdutosController extends Controller
 {
@@ -15,6 +16,7 @@ class ProdutosController extends Controller
     public function create()
     {
         $produto = new Produto();
+        
         return view('admin.produtos.create', compact('produto'));
         
     
@@ -30,12 +32,13 @@ class ProdutosController extends Controller
 
     public function show(Produto $produto)
     {
-        
-        return view('admin.produtos.show', compact('produto'));
+        $estoque = Estoque::all();
+        return view('admin.produtos.show', compact('produto'), compact('estoque'));
     }
 
     public function edit(Produto $produto)
     {
+       
         return view('admin.produtos.edit', compact('produto'));
     }
 

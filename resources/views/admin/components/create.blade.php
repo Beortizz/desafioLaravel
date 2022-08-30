@@ -10,8 +10,8 @@
             </form>
         </div>
         <div class="card-footer">
-            <button type="submit" form="form-adicionar"
-                class="btn btn-dark float-right">{{$button_name ?? 'Cadastrar'}}</button>
+            {{ $submitButton ?? null }}
+            {{ $back ?? null }}
         </div>
     </div>
 </div>

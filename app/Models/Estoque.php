@@ -9,6 +9,8 @@ use App\Models\Produto;
 class Estoque extends Model
 {
     use HasFactory;
+
+    protected $table = 'estoque';
     protected $fillable = [
         'produtos',
         'quantidade',
