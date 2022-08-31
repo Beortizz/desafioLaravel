@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use App\Models\Estoque;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NovoProduto;
 
 class ProdutosController extends Controller
 {
@@ -24,9 +26,19 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        $produtos = $request->all();
-        Produto::create($produtos);
-
+        $produto = $request->all();
+      
+        $email = new NovoProduto(
+            $request->nome, 
+            $request->sabor, 
+            $request->preco,
+            $request->descricao
+        );
+        
+        $email->subject = 'Novo Produto Adicionado';
+        $user = $request->user();
+        Mail::to($user)->send($email);
+        Produto::create($produto);
         return redirect()->route('produtos.index')->with('Success', true);
     }
 
