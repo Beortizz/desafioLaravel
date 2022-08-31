@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Estoque;
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 
 class EstoqueController extends Controller
 {
@@ -15,6 +17,10 @@ class EstoqueController extends Controller
 
     public function create()
     {
+        $user = User::all();
+        if (! Gate::allows('isAdm', $user)) {
+            return redirect()->route('estoque.index');
+        }
         $estoque = new Estoque();
         $produtos = Produto::all();
         return view('admin.estoque.create', compact('estoque'), compact('produtos'));
@@ -37,7 +43,11 @@ class EstoqueController extends Controller
     }
 
     public function edit(Estoque $estoque)
-    {
+    {   
+        $user = User::all();
+        if (! Gate::allows('isAdm', $user)) {
+            return redirect()->route('estoque.index');
+        }
         $produtos = Produto::all();
         return view('admin.estoque.edit', compact('estoque'),  compact('produtos'));
     }

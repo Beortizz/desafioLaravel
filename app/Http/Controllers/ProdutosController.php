@@ -19,6 +19,10 @@ class ProdutosController extends Controller
 
     public function create()
     {
+        $user = User::all();
+        if (! Gate::allows('isAdm', $user)) {
+            return redirect()->route('produtos.index');
+        }
         $produto = new Produto();
         
         return view('admin.produtos.create', compact('produto'));
@@ -50,7 +54,10 @@ class ProdutosController extends Controller
 
     public function edit(Produto $produto)
     {
-       
+        $user = User::all();
+        if (! Gate::allows('isAdm', $user)) {
+            return redirect()->route('produtos.index');
+        }
         return view('admin.produtos.edit', compact('produto'));
     }
 
