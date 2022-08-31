@@ -5,8 +5,8 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use App\Models\Estoque;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\NovoProduto;
 use App\Models\User;
+use App\Events\NovoProduto;
 
 
 class ProdutosController extends Controller
@@ -29,20 +29,13 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
         $produto = $request->all();
-        $users = User::all();
-        foreach ($users as $i => $user) 
-        {
-            $multiplicador = $i + 1;
-            $email = new NovoProduto(
+        $eventoNovoProduto = new NovoProduto(
             $request->nome, 
             $request->sabor, 
             $request->preco,
             $request->descricao
         );
-        $when = now()->addSeconds($multiplicador * 10);
-        $email->subject = 'Novo Produto Adicionado';
-        Mail::to($user)->later($when,$email);
-        }
+        event($eventoNovoProduto);
         Produto::create($produto);
         return redirect()->route('produtos.index')->with('Success', true);
     }
