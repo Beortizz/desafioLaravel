@@ -19,4 +19,10 @@
         <input type="text" name="descricao" id="descricao" class="form-control" required
             value="{{ old('descricao', $produto->descricao) }}">
     </div>
+    <div class="row">
+        <div class="form-group col-sm-12 d-flex justify-content-center mt-2 pl-5">
+            <label for="path" class="required">Foto</label>
+            <input type="file" class="pl-3" name="path" id="path" required> 
+        </div>
+    </div>
 </div>

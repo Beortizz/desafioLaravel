@@ -35,7 +35,7 @@ Route::get('/dale', function() {
     return view('dale');
 });
 
-Route::resource('/users', UserController::class)->middleware('auth');
+Route::resource('/users', UserController::class)->middleware(['auth', 'can:isAdm']);
 Route::resource('/estoque', EstoqueController::class)->middleware('auth');
 Route::resource('/produtos', ProdutosController::class)->middleware('auth');
 

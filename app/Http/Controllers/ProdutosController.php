@@ -7,7 +7,7 @@ use App\Models\Estoque;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Events\NovoProduto;
-
+use Storage;
 
 class ProdutosController extends Controller
 {
@@ -28,7 +28,9 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
+        $request->path = $request->file('path')->store('produtos');
         $produto = $request->all();
+        $produto['path'] = $request->path;
         $eventoNovoProduto = new NovoProduto(
             $request->nome, 
             $request->sabor, 
@@ -60,7 +62,9 @@ class ProdutosController extends Controller
 
     public function destroy(Produto $produto)
     {
+        // dd($produto->path);
         Produto::destroy($produto->id);
+        Storage::delete($produto->path);
         return redirect()->route('produtos.index');
     }
 }

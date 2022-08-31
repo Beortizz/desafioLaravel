@@ -5,7 +5,16 @@
 @slot('title', 'Detalhes do produtos')
 @slot('content')
 @include('admin.components.showTable', ['fields' => $produto->fieldsWithValue()])
+
+<div class="row">
+    <div class="col-sm-12 text-center mt-5">
+        <img src="{{$produto->path_url}}" class="img-thumbnail" height="70%" width="70%">
+    </div>
+</div>
+
 @endslot
+
+
 @slot('back')
 @can('update', $produto)
 <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-primary float-right"><svg

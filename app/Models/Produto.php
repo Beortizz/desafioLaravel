@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Estoque;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Storage;
+
 class Produto extends Model
 {
     use HasFactory;
@@ -13,6 +16,7 @@ class Produto extends Model
         'preco',
         'sabor',  
         'descricao',
+        'path',
     ];
     public function Estoque()
     {
@@ -25,6 +29,12 @@ class Produto extends Model
             'Preço' => $this->preco,
             'Sabor' => $this->sabor,
             'Descrição' => $this->descricao,
+            // 'Path' => $this->path,
         ];
+    }
+
+    public function getPathUrlAttribute() 
+    {
+        return 'http://127.0.0.1:8000/storage/'. $this->path;
     }
 }
