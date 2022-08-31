@@ -25,6 +25,7 @@ class EstoqueController extends Controller
     public function store(Request $request)
     {
         $estoque = $request->all();
+        dd($request->nome);    
         Estoque::create($estoque);
 
         return redirect()->route('estoque.index')->with('Success', true);

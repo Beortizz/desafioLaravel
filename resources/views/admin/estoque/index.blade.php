@@ -2,14 +2,14 @@
 @section('content')
 
 @component('admin.components.tablePaginate')
+@slot('create', route('estoque.create'))
 
-@slot('title', 'Estoque')
 @slot('navTable')
+
 <nav class="navbar navbar-light bg-light nav-search">
     <div class="container-fluid bottom-add d-flex">
         <form class="d-flex justify-content-end bar-search" method="get">
-            <input class="form-control me-2" type="search" placeholder="Pesquisar..." aria-label="Search" name="search">
-            <button class="btn btn-primary bottom-search" type="submit">Pesquisar</button>
+            <h1>Estoque</h1>
         </form>
         <a href="{{ route('estoque.create'  ) }}" class="btn btn-secondary btn-add">Adicionar</a>
     </div>
@@ -64,7 +64,3 @@
 
 @endsection
 
-@push('scripts')
-<script src="{{ asset('js/components/dataTable.js') }}"></script>
-<script src="{{ asset('js/components/sweetAlert.js') }}"></script>
-@endpush

@@ -2,8 +2,17 @@
 @section('content')
 
 @component('admin.components.tablePaginate')
+@slot('titulo')
+@slot('navTable')
+<nav class="navbar navbar-light bg-light nav-search">
+    <div class="container-fluid bottom-add d-flex">
+        <form class="d-flex justify-content-end bar-search" method="get">
+            <h1>Usuários</h1>
+        </form>
+    </div>
+</nav>
+@endslot
 
-@slot('title', 'Usuários')
 
 @slot('head')
 <th>Nome</th>
@@ -11,7 +20,6 @@
 <th>Matrícula</th>
 <th>Fidelidade</th>
 @endslot
-
 @slot('body')
 @foreach ($users as $user)
 <tr>

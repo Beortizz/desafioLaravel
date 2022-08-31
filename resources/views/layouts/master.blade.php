@@ -17,7 +17,6 @@
         <div class="wrapper">
             @include('admin.includes.navbar')
             @include('admin.includes.sidebar')
-            @include('admin.includes.success')
             <div class="content-wrapper">
                 <div class="content-header">
                     <div class="container-fluid">
@@ -38,13 +37,5 @@
             </div>
             @include('admin.includes.footer')
         </div>
-
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script>
-            var errors = {!! $errors !!}
-        </script>
-        <script src="{{ asset('js/components/error.js')  }}"></script>
-        <script src="{{ asset('js/components/responsiveSidebar.js')  }}"></script>
-        @stack('scripts')
     </body>
 </html>

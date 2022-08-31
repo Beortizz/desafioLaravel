@@ -39,5 +39,5 @@ Route::resource('/users', UserController::class)->middleware('auth');
 Route::resource('/estoque', EstoqueController::class)->middleware('auth');
 Route::resource('/produtos', ProdutosController::class)->middleware('auth');
 
-// Route::get('/email');
+
 require __DIR__.'/auth.php';

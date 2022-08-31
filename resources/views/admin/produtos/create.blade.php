@@ -24,8 +24,3 @@ class="btn btn-dark float-right">{{$button_name ?? 'Cadastrar'}}</button>
 @endcomponent
 @endsection
 
-@push('scripts')
-<script>
-$("#type").attr("disabled", true);
-</script>
-@endpush

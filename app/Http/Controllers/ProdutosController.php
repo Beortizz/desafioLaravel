@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Estoque;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NovoProduto;
+use App\User;
 
 class ProdutosController extends Controller
 {
@@ -26,18 +27,24 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        $produto = $request->all();
-      
-        $email = new NovoProduto(
-            $request->nome, 
-            $request->sabor, 
-            $request->preco,
-            $request->descricao
-        );
-        
+        $produto = $request->all();  
         $email->subject = 'Novo Produto Adicionado';
-        $user = $request->user();
-        Mail::to($user)->send($email);
+        $users = User::all();
+        foreach($users as $user)
+        {
+            if($user->permissao == true)
+            {
+                $email = new NovoProduto(
+                    $request->nome, 
+                    $request->sabor, 
+                    $request->preco,
+                    $request->descricao
+                );
+                Mail::to($user)->send($email);
+                sleep(7);
+            }
+        }
+       
         Produto::create($produto);
         return redirect()->route('produtos.index')->with('Success', true);
     }

@@ -1,10 +1,10 @@
 <div class="row">
     <div class="form-group col-sm-4">
         <label for="produtos" class="required">Produto </label>
-        <select class="form-select form-select-lg d-flex" aria-label="Default select example">
+        <select class="form-select form-select-lg d-flex" aria-label="Default select example" name="produto" id="produto">
             <option selected>Selecione um Produto</option>
             @foreach($produtos as $produto)
-            <option value="{{$produto->nome}}">{{$produto->nome }}</option>
+            <option name="produto" id="produto" value="{{ $produto->nome }}">{{$produto->nome }}</option>
             @endforeach
           </select>
     </div>

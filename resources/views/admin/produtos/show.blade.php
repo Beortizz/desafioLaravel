@@ -23,11 +23,3 @@
 @endslot
 @endcomponent
 @endsection
-
-@push('scripts')
-<script>
-$(".form-control").attr("disabled", true);
-</script>
-<script src="{{ asset('js/components/dataTable.js') }}"></script>
-<script src="{{ asset('js/components/sweetAlert.js') }}"></script>
-@endpush

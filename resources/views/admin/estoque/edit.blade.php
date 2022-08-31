@@ -18,9 +18,3 @@
 @endcomponent
 
 @endsection
-
-@push('scripts')
-<script>
-$("#type").attr("disabled", true);
-</script>
-@endpush
