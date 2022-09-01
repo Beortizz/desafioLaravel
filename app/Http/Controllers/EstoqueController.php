@@ -37,9 +37,9 @@ class EstoqueController extends Controller
         $produto = Produto::whereNome($request->produtos)->first();
         $estoque = $request->all(); 
         $estoque = Estoque::create($estoque);
-        $estoque = new Estoque();
+        // $estoque = new Estoque();
         $estoque->produtos()->sync([$produto->id]);
-        
+
         return redirect()->route('estoque.index')->with('Success', true);
     }
 
