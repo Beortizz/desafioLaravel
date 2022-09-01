@@ -10,7 +10,7 @@
         <form class="d-flex justify-content-end bar-search" method="get">
             <h1>Produtos</h1>
         </form>
-        <a href="{{ route('produtos.create'  ) }}" class="btn btn-secondary btn-add">Adicionar</a>
+        <a href="{{ route('produtos.create') }}" class="btn btn-secondary btn-add">Adicionar</a>
     </div>
 </nav>
 @endslot

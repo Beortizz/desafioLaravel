@@ -10,5 +10,4 @@ class EstoqueProduto extends Model
     use HasFactory;
 
     protected $table = 'estoque_produto';
-    
 }

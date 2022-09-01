@@ -23,7 +23,6 @@ class Estoque extends Model
 
     public function fieldsWithValue() {
         return [
-            'Produto' => $this->produtos,
             'Quantidade' => $this->quantidade,
             'Data' => $this->data,
         ];

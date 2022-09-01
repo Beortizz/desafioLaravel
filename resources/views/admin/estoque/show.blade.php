@@ -1,10 +1,26 @@
 @extends('layouts.master')
-
 @section('content')
 @component('admin.components.show')
 @slot('title', 'Detalhes do Estoque')
 @slot('content')
-@include('admin.components.showTable', ['fields' => $estoque->fieldsWithValue()])
+{{-- @include('admin.components.showTable', ['fields' => $estoque->fieldsWithValue()]) --}}
+<table class="table table-sm table-striped table-bordered">
+    <th>Produtos</th>
+    <th>Data</th>
+    <th>Quantidade</th>
+    <tbody>
+        <tr>
+            <td width="20%">
+                @foreach ($estoque->produtos as $produto)
+                    <b>{{ $produto->nome }}</b>
+                @endforeach
+            </td>
+            {{-- <td>{!! $value !!}</td> --}}
+            <td> {{ $estoque->data }} </td>
+            <td>{{ $estoque->quantidade }}</td>
+        </tr>
+    </tbody>
+</table>
 @endslot
 @slot('back')
 @can('view', $estoque)

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
+use App\Models\EstoqueProduto;
 
 class EstoqueController extends Controller
 {
@@ -17,12 +18,15 @@ class EstoqueController extends Controller
 
     public function create()
     {
+ 
         $user = User::all();
         if (! Gate::allows('isAdm', $user)) {
             return redirect()->route('estoque.index');
         }
+    
         $estoque = new Estoque();
         $produtos = Produto::all();
+    
         return view('admin.estoque.create', compact('estoque'), compact('produtos'));
         
     
@@ -33,7 +37,7 @@ class EstoqueController extends Controller
         $produto = Produto::whereNome($request->produtos)->first();
         $estoque = $request->all(); 
         $estoque = Estoque::create($estoque);
-        // $estoque = new Estoque();
+        $estoque = new Estoque();
         $estoque->produtos()->sync([$produto->id]);
         
         return redirect()->route('estoque.index')->with('Success', true);
@@ -41,7 +45,6 @@ class EstoqueController extends Controller
 
     public function show(Estoque $estoque)
     {
-        $produtos = Produto::where();
         return view('admin.estoque.show', compact('estoque'));
     }
 
@@ -64,6 +67,23 @@ class EstoqueController extends Controller
     public function destroy(Estoque $estoque)
     {
         Estoque::destroy($estoque->id);
+        return redirect()->route('estoque.index');
+    }
+
+    public function addProduto(Estoque $estoque)
+    {
+        $user = User::all();
+        if (! Gate::allows('isAdm', $user)) {
+            return redirect()->route('estoque.index');
+        }
+
+        $produtos = Produto::all();
+        return view('admin.estoque.addProduto', compact('estoque'), compact('produtos'));
+        
+    
+    }
+    public function updateEstoque(Request $request, Estoque $estoque)
+    {
         return redirect()->route('estoque.index');
     }
 }
