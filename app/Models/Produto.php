@@ -18,7 +18,7 @@ class Produto extends Model
         'descricao',
         'path',
     ];
-    public function Estoque()
+    public function estoques()
     {
         return $this->belongsToMany(Estoque::class)->withTimeStamps();
     }

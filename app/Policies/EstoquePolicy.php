@@ -53,7 +53,7 @@ class EstoquePolicy
      */
     public function update(User $user, Estoque $estoque)
     {
-        return $user->permissao == true;
+        return $user->permissao == false;
     }
 
     /**
@@ -65,7 +65,7 @@ class EstoquePolicy
      */
     public function delete(User $user, Estoque $estoque)
     {
-        return $user->permissao == true;
+        return $user->permissao == false;
     }
 
     /**

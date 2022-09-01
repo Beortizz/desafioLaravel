@@ -7,6 +7,9 @@
 @slot('url', route('estoque.update', $estoque->id))
 @slot('form')
 @include('admin.estoque.form')
+@slot('submitButton')
+<button type="submit" form="form-adicionar" class="btn btn-primary float-right">{{$button_name ?? 'Salvar Alterações'}}</button>
+@endslot
 @endslot
 @slot('back')
 <a href="{{ route('estoque.index') }}" class="btn btn-dark float-left"><svg xmlns="http://www.w3.org/2000/svg"

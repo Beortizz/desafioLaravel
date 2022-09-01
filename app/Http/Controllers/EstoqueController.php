@@ -30,15 +30,18 @@ class EstoqueController extends Controller
 
     public function store(Request $request)
     {
-        $estoque = $request->all();
-        dd($request->nome);    
-        Estoque::create($estoque);
-
+        $produto = Produto::whereNome($request->produtos)->first();
+        $estoque = $request->all(); 
+        $estoque = Estoque::create($estoque);
+        // $estoque = new Estoque();
+        $estoque->produtos()->sync([$produto->id]);
+        
         return redirect()->route('estoque.index')->with('Success', true);
     }
 
     public function show(Estoque $estoque)
     {
+        $produtos = Produto::where();
         return view('admin.estoque.show', compact('estoque'));
     }
 

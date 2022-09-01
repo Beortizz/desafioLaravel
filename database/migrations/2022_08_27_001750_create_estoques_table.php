@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('estoque', function (Blueprint $table) {
             $table->id();
-            $table->string('produtos');
             $table->date('data');
             $table->integer('quantidade');
             $table->timestamps();

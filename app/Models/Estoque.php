@@ -12,11 +12,11 @@ class Estoque extends Model
 
     protected $table = 'estoque';
     protected $fillable = [
-        'produtos',
+        // 'produtos',
         'quantidade',
         'data',
     ];
-    public function Produtos()
+    public function produtos()
     {
         return $this->belongsToMany(Produto::class)->withTimestamps();
     }

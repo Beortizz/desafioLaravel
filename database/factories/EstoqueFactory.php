@@ -21,7 +21,6 @@ class EstoqueFactory extends Factory
         
        
         return [
-            'Produtos' => $this->faker->word(),
             'Quantidade' => rand(1, 100),
             'Data'=> $this->faker->date('Y-m-d'), 
           ];

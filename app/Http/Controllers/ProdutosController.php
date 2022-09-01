@@ -7,6 +7,7 @@ use App\Models\Estoque;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Events\NovoProduto;
+use Illuminate\Support\Facades\Gate;
 use Storage;
 
 class ProdutosController extends Controller
