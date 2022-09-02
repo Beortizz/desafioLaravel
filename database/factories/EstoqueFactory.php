@@ -17,7 +17,7 @@ class EstoqueFactory extends Factory
      */
     public function definition()
     {
-        Produto::factory()->count(3)->create();
+        //  Produto::factory()->count(9)->create();
         
        
         return [

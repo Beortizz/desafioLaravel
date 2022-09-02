@@ -79,7 +79,7 @@ class ProdutosController extends Controller
         return redirect()->route('produtos.index');
     }
 
-    public function destroy(Produto $produto)
+    public function destroy(Produto $produto, Request $request)
     {
         Produto::destroy($produto->id);
         Storage::delete($produto->path);

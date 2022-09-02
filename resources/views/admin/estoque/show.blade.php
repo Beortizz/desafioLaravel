@@ -3,7 +3,6 @@
 @component('admin.components.show')
 @slot('title', 'Detalhes do Estoque')
 @slot('content')
-{{-- @include('admin.components.showTable', ['fields' => $estoque->fieldsWithValue()]) --}}
 <table class="table table-sm table-striped table-bordered">
     <th>Produtos</th>
     <th>Data</th>
@@ -12,7 +11,7 @@
         <tr>
             <td width="20%">
                 @foreach ($estoque->produtos as $produto)
-                    <b>{{ $produto->nome }}</b>
+                    {{ $produto->nome }}
                 @endforeach
             </td>
             {{-- <td>{!! $value !!}</td> --}}
