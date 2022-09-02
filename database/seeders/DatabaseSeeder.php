@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // \App\Models\Produto::factory(1)->create();
-         \App\Models\Estoque::factory(1)->create();
-        \App\Models\EstoqueProduto::factory(1)->create();
+         \App\Models\Estoque::factory(3)->create();
+        \App\Models\EstoqueProduto::factory(3)->create();
         // $this->call(EstoqueSeeder::class);
         
     }
