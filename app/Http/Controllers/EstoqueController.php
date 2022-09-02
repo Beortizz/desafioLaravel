@@ -60,8 +60,11 @@ class EstoqueController extends Controller
 
     public function update(Request $request, Estoque $estoque)
     {
+        $produto = Produto::whereNome($request->produtos)->first();
         $estoque->update($request->all());
+        $estoque->produtos()->sync([$produto->id]);
         return redirect()->route('estoque.index');
+        
     }
 
     public function destroy(Estoque $estoque)
@@ -70,20 +73,4 @@ class EstoqueController extends Controller
         return redirect()->route('estoque.index');
     }
 
-    public function addProduto(Estoque $estoque)
-    {
-        $user = User::all();
-        if (! Gate::allows('isAdm', $user)) {
-            return redirect()->route('estoque.index');
-        }
-
-        $produtos = Produto::all();
-        return view('admin.estoque.addProduto', compact('estoque'), compact('produtos'));
-        
-    
-    }
-    public function updateEstoque(Request $request, Estoque $estoque)
-    {
-        return redirect()->route('estoque.index');
-    }
 }
