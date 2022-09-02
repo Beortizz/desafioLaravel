@@ -8,6 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <div class="container mt-2">ALOU</div>
+    <div class="container mt-2"></div>
 </body>
 </html>
