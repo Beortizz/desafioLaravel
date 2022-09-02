@@ -21,7 +21,7 @@ class ProdutoFactory extends Factory
              'sabor' => $this->faker->word(),
              'preco' => rand(1, 10),
              'descricao' => $this->faker->word(),
-             'path' => $this->faker->word(),
+             'path' => $this->faker->image('storage/app/public/produtos', 640, 480, null, false),
         ];
     }
 }

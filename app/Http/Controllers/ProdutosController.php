@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Events\NovoProduto;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\ProdutosFormRequest;
+
 use Storage;
 
 class ProdutosController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $produtos = Produto::all();
-        return view('admin.produtos.index', compact('produtos'));
+        $msg = $request->session()->get('msg');
+        return view('admin.produtos.index', compact('produtos'), compact('msg'));
     }
 
     public function create()
@@ -31,7 +34,7 @@ class ProdutosController extends Controller
     
     }
 
-    public function store(Request $request)
+    public function store(ProdutosFormRequest $request)
     {
         $request->path = $request->file('path')->store('produtos');
         $produto = $request->all();
@@ -42,8 +45,11 @@ class ProdutosController extends Controller
             $request->preco,
             $request->descricao
         );
-        event($eventoNovoProduto);
+
+        event($eventoNovoProduto);        
         Produto::create($produto);
+
+        $request->session()->flash('msg', 'Produto criado com sucesso');
         return redirect()->route('produtos.index')->with('Success', true);
     }
 
@@ -62,17 +68,22 @@ class ProdutosController extends Controller
         return view('admin.produtos.edit', compact('produto'));
     }
 
-    public function update(Request $request, Produto $produto)
+    public function update(ProdutosFormRequest $request, Produto $produto)
     {
-        $produto->update($request->all());
+        
+        $request->path = $request->file('path')->store('produtos');
+        $prod = $request->all();
+        $prod['path'] = $request->path;
+        $produto->update($prod);
+        $request->session()->flash('msg', 'Produto editado com sucesso');
         return redirect()->route('produtos.index');
     }
 
     public function destroy(Produto $produto)
     {
-        // dd($produto->path);
         Produto::destroy($produto->id);
         Storage::delete($produto->path);
+        $request->session()->flash('msg', 'Produto excluído com sucesso');
         return redirect()->route('produtos.index');
     }
 }

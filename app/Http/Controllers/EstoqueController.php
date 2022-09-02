@@ -7,13 +7,15 @@ use App\Models\Produto;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\EstoqueProduto;
+use App\Http\Requests\EstoqueFormRequest;
 
 class EstoqueController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $estoque = Estoque::all();
-        return view('admin.estoque.index', compact('estoque'));
+        $msg = $request->session()->get('msg');
+        return view('admin.estoque.index', compact('estoque'), compact('msg'));
     }
 
     public function create()
@@ -32,14 +34,13 @@ class EstoqueController extends Controller
     
     }
 
-    public function store(Request $request)
+    public function store(EstoqueFormRequest $request)
     {
         $produto = Produto::whereNome($request->produtos)->first();
         $estoque = $request->all(); 
         $estoque = Estoque::create($estoque);
-        // $estoque = new Estoque();
+        $request->session()->flash('msg', 'Estoque criado com sucesso');
         $estoque->produtos()->sync([$produto->id]);
-
         return redirect()->route('estoque.index')->with('Success', true);
     }
 
@@ -63,13 +64,15 @@ class EstoqueController extends Controller
         $produto = Produto::whereNome($request->produtos)->first();
         $estoque->update($request->all());
         $estoque->produtos()->sync([$produto->id]);
+        $request->session()->flash('msg', 'Estoque criado com sucesso');
         return redirect()->route('estoque.index');
         
     }
 
-    public function destroy(Estoque $estoque)
+    public function destroy(Estoque $estoque, Request $request)
     {
         Estoque::destroy($estoque->id);
+        $request->session()->flash('msg', 'Estoque excluído com sucesso');
         return redirect()->route('estoque.index');
     }
 

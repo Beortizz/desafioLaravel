@@ -4,6 +4,15 @@
             <h3 class="card-title title-form">{{ $title ?? null }} </h3>
         </div>
         <div class="card-body">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form id="form-adicionar" action="{{ $url ?? '/' }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{ $form ?? null }}
