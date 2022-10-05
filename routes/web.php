@@ -28,11 +28,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })/*->middleware(['auth'])*/->name('dashboard');
 
-    Route::resource('/users', UserController::class);
-    Route::resource('/estoque', EstoqueController::class);
-    Route::resource('/produtos', ProdutosController::class);
+
     
 });
+
+Route::resource('/users', UserController::class);
+Route::resource('/estoque', EstoqueController::class);
+Route::resource('/produtos', ProdutosController::class);
 
 
 Route::get('/dale', function() {
